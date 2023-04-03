@@ -48,9 +48,9 @@
 	const labelContainer2 = document.getElementById("label-container2");
 
         for (let i = 0; i < classLabels.length; i++) {
-            labelContainer.appendChild(document.createElement("div"));
+            labelContainer2.appendChild(document.createElement("div"));
         }
-	labelContainer.childNodes[0].innerHTML = "<font size='+5'>Try to say a letter: A, B or C.</font>"	
+	labelContainer.innerHTML = "<font size='+5'>Try to say a letter: A, B or C.</font>"	
 
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
@@ -63,10 +63,16 @@
                 //labelContainer.childNodes[i].innerHTML = classPrediction;
 				var score = result.scores[i].toFixed(2);
 				console.log(score);
-				if (score>0.80 && classLabels[i]!="Background Noise")
+				if (score>0.80)
 				{
+				if(classLabels[i]!="Background Noise")
+				{
+				resultstr=classLabels[i];
+				} else
+				{
+				resultstr="Not A, B or C"
+				}
 					
-					resultstr=classLabels[i];
 				}
             }
 			setTimeout(function(){
